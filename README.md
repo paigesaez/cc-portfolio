@@ -9,11 +9,15 @@ Astro site with Keystatic as the editor. Content lives in `src/content/projects/
 
 Site at http://127.0.0.1:4321, editor at http://127.0.0.1:4321/keystatic (local mode: saving writes to the files in this repo; commit and push as usual).
 
+## Editing on the live site
+
+The site deploys from `main` to Vercel. The editor lives at `/keystatic` on the live site and commits to this repo through a GitHub App. One-time setup: open `/keystatic` on the deployed site, follow its setup screen to create the GitHub App, add the environment variables it gives you in Vercel, redeploy. After that anyone with write access to the repo can sign in with GitHub and edit.
+
 ## Build
 
-    SKIP_KEYSTATIC=1 npm run build
+    npm run build
 
-`SKIP_KEYSTATIC=1` leaves the editor routes out so the build is fully static (GitHub Pages, any static host). On Vercel, drop that flag, add `@astrojs/vercel`, and switch `keystatic.config.ts` storage to `github` to get the editor in the browser.
+On a host without server functions (GitHub Pages), `SKIP_KEYSTATIC=1 npm run build` leaves the editor out and produces a plain static site.
 
 ## Where things are
 

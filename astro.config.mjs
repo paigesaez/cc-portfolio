@@ -2,13 +2,16 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
+import vercel from '@astrojs/vercel';
 
-// The Keystatic editor routes (/keystatic, /api/keystatic) run only in dev, or in production on a host
-// with server routes (Vercel). A plain static build (GitHub Pages) sets SKIP_KEYSTATIC=1 and gets the site only.
+// The site is static. The Keystatic editor (/keystatic) and its API (/api/keystatic) are the only
+// server routes; the Vercel adapter runs them as functions. SKIP_KEYSTATIC=1 builds a plain static
+// site with no editor, for GitHub Pages or any host without functions.
 const editor = process.env.SKIP_KEYSTATIC ? [] : [keystatic()];
 
 export default defineConfig({
-  site: 'https://www.calipercrayon.com',
+  site: 'https://portfolio.calipercrayon.com',
   output: 'static',
+  adapter: process.env.SKIP_KEYSTATIC ? undefined : vercel(),
   integrations: [react(), markdoc(), ...editor],
 });

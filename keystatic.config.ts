@@ -2,9 +2,12 @@ import { config, fields, collection } from '@keystatic/core';
 
 // Content model for a project page. Every field here is a form field in the editor at /keystatic.
 export default config({
-  storage: { kind: 'local' },
-  // For the hosted editor on Vercel switch to:
-  // storage: { kind: 'github', repo: { owner: 'paigesaez', name: 'sj-portfolio' } },
+  // Local mode on your machine (npm run dev): edits write straight to the files in this repo.
+  // GitHub mode on the live site: edits are committed to the repo through a GitHub App.
+  storage:
+    process.env.NODE_ENV === 'development'
+      ? { kind: 'local' }
+      : { kind: 'github', repo: { owner: 'paigesaez', name: 'cc-portfolio' } },
   ui: { brand: { name: 'Caliper & Crayon' } },
   collections: {
     projects: collection({
