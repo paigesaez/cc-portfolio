@@ -93,11 +93,11 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .plinth { background: var(--plinth); padding: clamp(24px, 5vw, 64px); display: grid; place-items: center; }
 .plinth img { box-shadow: var(--shadow); }
 .plinth.pair { grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 40px); }
-.plinth.single img { max-width: 560px; width: 100%; }
+.plinth.single img { width: auto; max-width: 100%; min-width: min(560px, 100%); } /* natural size up to full width; small images stay at least 560px */
 .plinth .img-link { display: block; text-decoration: none; }
 .plinth .img-link img { transition: transform .25s ease-out; }
 .plinth .img-link:hover img { transform: scale(1.015); }
-.plinth.single .img-link { max-width: 560px; width: 100%; }
+.plinth.single .img-link { max-width: 100%; }
 
 .project { display: grid; grid-template-columns: 3fr 8fr; gap: var(--s4); padding-block: var(--s5); }
 .project > * { min-width: 0; }
