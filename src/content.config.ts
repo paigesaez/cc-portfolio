@@ -1,7 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
-const img = z.object({ image: z.string(), alt: z.string().default('') });
+const img = z.object({ image: z.string(), alt: z.string().default(''), link: z.string().nullable().optional() });
 
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.mdoc', base: './src/content/projects' }),

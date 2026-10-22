@@ -94,6 +94,10 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .plinth img { box-shadow: var(--shadow); }
 .plinth.pair { grid-template-columns: 1fr 1fr; gap: clamp(16px, 3vw, 40px); }
 .plinth.single img { max-width: 560px; width: 100%; }
+.plinth .img-link { display: block; text-decoration: none; }
+.plinth .img-link img { transition: transform .25s ease-out; }
+.plinth .img-link:hover img { transform: scale(1.015); }
+.plinth.single .img-link { max-width: 560px; width: 100%; }
 
 .project { display: grid; grid-template-columns: 3fr 8fr; gap: var(--s4); padding-block: var(--s5); }
 .project > * { min-width: 0; }

@@ -38,7 +38,7 @@ const sectionName = { design: 'Design', photography: 'Photography', video: 'Vide
   {d.hero.length > 0 && (
     <div class="wrap">
       <div class={`plinth ${d.hero.length > 1 ? 'pair' : 'single'}`}>
-        {d.hero.map((h) => <img src={h.image} alt={h.alt} />)}
+        {d.hero.map((h) => h.link ? <a class="img-link" href={h.link} rel="noopener"><img src={h.image} alt={h.alt} /></a> : <img src={h.image} alt={h.alt} />)}
       </div>
     </div>
   )}
@@ -66,7 +66,7 @@ const sectionName = { design: 'Design', photography: 'Photography', video: 'Vide
       {d.sheets.map((s) => (
         <section class="sheet">
           <div class={`plinth ${s.images.length > 1 ? 'pair' : ''}`}>
-            {s.images.map((im) => <img src={im.image} alt={im.alt} />)}
+            {s.images.map((im) => im.link ? <a class="img-link" href={im.link} rel="noopener"><img src={im.image} alt={im.alt} /></a> : <img src={im.image} alt={im.alt} />)}
           </div>
           {(s.label || s.caption) && <div class="cap"><span class="mono">{s.label}</span><p>{s.caption}</p></div>}
         </section>

@@ -53,6 +53,7 @@ export default config({
           fields.object({
             image: fields.image({ label: 'Image', directory: 'public/img/projects', publicPath: '/img/projects/' }),
             alt: fields.text({ label: 'Alt text' }),
+            link: fields.url({ label: 'Link (optional)', description: 'Clicking the image opens this, e.g. the video on YouTube.' }),
           }),
           { label: 'Hero images', description: 'One or two. Two show side by side.', itemLabel: (p) => p.fields.alt.value || 'image' }
         ),
@@ -62,6 +63,7 @@ export default config({
               fields.object({
                 image: fields.image({ label: 'Image', directory: 'public/img/projects', publicPath: '/img/projects/' }),
                 alt: fields.text({ label: 'Alt text' }),
+            link: fields.url({ label: 'Link (optional)', description: 'Clicking the image opens this, e.g. the video on YouTube.' }),
               }),
               { label: 'Images', description: 'One shows full width, two show side by side.', itemLabel: (p) => p.fields.alt.value || 'image' }
             ),
