@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check": "tsx scripts/check-content.mts",
+    "prebuild": "npm run check"
   },
   "dependencies": {
     "@astrojs/markdoc": "^2.1.0",
@@ -17,5 +19,8 @@
     "astro": "^7.4.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15"
   }
 }
