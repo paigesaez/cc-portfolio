@@ -1,7 +1,12 @@
 ---
 import '../styles/style.css';
 const { title, description = '', current = '' } = Astro.props;
-const sections = { caliper: ['Origin Labs', 'Autodesk Ember', 'EngineerGuy', 'University of Illinois', 'Arizona State'], crayon: ['Photography', 'Design', 'Performance'] };
+// Footer links go to the original site (www.calipercrayon.com) until these sections exist here.
+const old = 'https://www.calipercrayon.com/about';
+const sections = {
+  caliper: [['Origin Labs', `${old}/caliper/origin`], ['Autodesk Ember', `${old}/caliper/autodesk`], ['EngineerGuy', `${old}/caliper/engineerguy`], ['University of Illinois', `${old}/caliper/uiuc`], ['Arizona State', `${old}/caliper/asu`]],
+  crayon: [['Photography', `${old}/crayon/photography`], ['Design', `${old}/crayon/design`], ['Performance', `${old}/crayon/performance`]],
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -31,9 +36,9 @@ const sections = { caliper: ['Origin Labs', 'Autodesk Ember', 'EngineerGuy', 'Un
 <footer class="footer">
   <div class="wrap">
     <div class="col"><img src="/img/brand/mark.png" alt=""><span class="mono" style="margin-top:8px">Caliper &amp; Crayon</span></div>
-    <div class="col"><span class="mono">Caliper</span>{sections.caliper.map((s) => <a href="/work/#caliper">{s}</a>)}</div>
-    <div class="col"><span class="mono">Crayon</span>{sections.crayon.map((s) => <a href="/work/#crayon">{s}</a>)}</div>
-    <div class="col"><span class="mono">Contact</span><span>stephenjameskranz@gmail.com</span><a href="/docs/sj-kranz-cv.pdf">Curriculum vitae (PDF)</a><a href="https://www.youtube.com/@engineerguy" rel="noopener">YouTube</a></div>
+    <div class="col"><span class="mono">Caliper</span>{sections.caliper.map(([label, url]) => <a href={url}>{label}</a>)}</div>
+    <div class="col"><span class="mono">Crayon</span>{sections.crayon.map(([label, url]) => <a href={url}>{label}</a>)}</div>
+    <div class="col"><span class="mono">Contact</span><span>stephenjameskranz@gmail.com</span><a href="/docs/sj-kranz-cv.pdf">Curriculum vitae (PDF)</a></div>
   </div>
 </footer>
 </body>
