@@ -22,7 +22,11 @@ const groups = order.map((s) => ({ key: s, name: names[s], items: projects.filte
         <div class="grid">
           {g.items.map((p) => (
             <a class="card" href={`/work/${p.id}/`}>
-              <div class="img">{p.data.hero[0] && <img src={p.data.hero[0].image} alt={p.data.hero[0].alt} loading="lazy" />}</div>
+              {(() => {
+                const t = p.data.thumb; const src = t.image || p.data.hero[0]?.image; const alt = t.image ? p.data.title : (p.data.hero[0]?.alt || p.data.title);
+                const zoom = Number(t.zoom) || 1; const style = `object-position: ${t.focus}; transform-origin: ${t.focus};${zoom !== 1 ? ` --zoom: ${zoom};` : ''}`;
+                return <div class={`img ${t.fit}`}>{src && <img src={src} alt={alt} loading="lazy" style={style} />}</div>;
+              })()}
               <div class="body">
                 <h3 class="h3">{p.data.title}</h3>
                 {p.data.summary && <p class="sum">{p.data.summary}</p>}

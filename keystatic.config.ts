@@ -58,6 +58,44 @@ export default config({
           }),
           { label: 'Hero images', description: 'One or two. Two show side by side.', itemLabel: (p) => p.fields.alt.value || 'image' }
         ),
+        thumb: fields.object(
+          {
+            image: fields.image({
+              label: 'Thumbnail image (optional)',
+              description: 'A dedicated 4:3 image for the card on the work grid. Leave empty to crop the first hero image using the controls below.',
+              directory: 'public/img/projects',
+              publicPath: '/img/projects/',
+            }),
+            fit: fields.select({
+              label: 'Fit',
+              description: 'Whole (default, how cards look today): the entire image is shown with space around it. Fill: the image is cropped to cover the whole card; use with Focus and Zoom to crop in on one subject.',
+              options: [{ label: 'Fill the card', value: 'fill' }, { label: 'Show the whole image', value: 'whole' }],
+              defaultValue: 'whole',
+            }),
+            focus: fields.select({
+              label: 'Focus',
+              description: 'Which part of the image stays in view when it is cropped to fill the card.',
+              options: [
+                { label: 'Center', value: 'center' },
+                { label: 'Top', value: 'top' }, { label: 'Bottom', value: 'bottom' },
+                { label: 'Left', value: 'left' }, { label: 'Right', value: 'right' },
+                { label: 'Top left', value: 'top left' }, { label: 'Top right', value: 'top right' },
+                { label: 'Bottom left', value: 'bottom left' }, { label: 'Bottom right', value: 'bottom right' },
+              ],
+              defaultValue: 'center',
+            }),
+            zoom: fields.select({
+              label: 'Zoom',
+              description: 'Enlarge the image inside the card to crop in on a detail: one word of a typeface, the title block, the logo.',
+              options: [
+                { label: '1× (no zoom)', value: '1' }, { label: '1.25×', value: '1.25' }, { label: '1.5×', value: '1.5' },
+                { label: '2×', value: '2' }, { label: '2.5×', value: '2.5' }, { label: '3×', value: '3' },
+              ],
+              defaultValue: '1',
+            }),
+          },
+          { label: 'Card thumbnail', description: 'How this project looks on the work grid. The card is 4:3. Pick one subject and make it large; a whole page shrunk into the card reads as a grey rectangle.' }
+        ),
         sheets: fields.array(
           fields.object({
             images: fields.array(

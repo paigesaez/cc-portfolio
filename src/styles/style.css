@@ -156,9 +156,13 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .group-head a { text-decoration: none; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
 .card { background: var(--card); border: 1px solid var(--hair); text-decoration: none; display: block; overflow: hidden; border-radius: 2px; }
-.card .img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--plinth); display: grid; place-items: center; padding: 8%; }
-.card .img img { width: 100%; height: 100%; object-fit: contain; transition: transform .25s ease-out; }
-.card:hover .img img { transform: scale(1.02); }
+/* Card thumbnail. "fill" crops the image to cover the 4:3 card (object-position = Focus, --zoom = Zoom from the editor);
+   "whole" shows the entire image on the plinth with space around it. */
+.card .img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--plinth); display: grid; place-items: center; }
+.card .img img { --zoom: 1; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--zoom)); transition: transform .25s ease-out; }
+.card .img.whole { padding: 8%; }
+.card .img.whole img { object-fit: contain; }
+.card:hover .img img { transform: scale(calc(var(--zoom) * 1.02)); }
 .card:hover .h3 { text-decoration: underline; text-decoration-color: var(--crayon); text-underline-offset: 3px; }
 .card .body { padding: 16px 16px 18px; display: grid; gap: 8px; }
 .card .sum { margin: 0; color: var(--graphite); font-size: 15px; }

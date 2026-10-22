@@ -18,6 +18,12 @@ const projects = defineCollection({
     format: z.string().default(''),
     links: z.array(z.object({ label: z.string(), url: z.string() })).default([]),
     hero: z.array(img).default([]),
+    thumb: z.object({
+      image: z.string().nullable().optional(),
+      fit: z.enum(['fill', 'whole']).default('whole'),
+      focus: z.string().default('center'),
+      zoom: z.string().default('1'),
+    }).default({}),
     sheets: z.array(z.object({ images: z.array(img).default([]), label: z.string().default(''), caption: z.string().default('') })).default([]),
     docs: z.array(z.object({ kind: z.string().default('PDF'), title: z.string(), detail: z.string().default(''), url: z.string() })).default([]),
     todo: z.array(z.string()).default([]),
