@@ -6,3 +6,7 @@ dist
 
 
 markdoc.config.timestamp-*.mjs
+
+# local secrets (Keystatic setup writes these); never commit
+.env
+.env.*
