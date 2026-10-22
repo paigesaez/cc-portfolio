@@ -26,7 +26,7 @@ const groups = order.map((s) => ({ key: s, name: names[s], items: projects.filte
               <div class="body">
                 <h3 class="h3">{p.data.title}</h3>
                 {p.data.summary && <p class="sum">{p.data.summary}</p>}
-                <div class="tags"><span class={`tag ${p.data.side}`}>{p.data.side}</span>{p.data.year && <span class="mono">{p.data.year}</span>}</div>
+                {p.data.year && <div class="tags"><span class="mono">{p.data.year}</span></div>}
               </div>
             </a>
           ))}
