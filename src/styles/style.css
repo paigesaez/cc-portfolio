@@ -2,16 +2,16 @@
    Type: Bricolage Grotesque (display + text, optical size axis) and DM Mono (labels, data). */
 
 :root {
-  --paper: #F7F7F4;
+  --paper: #FFFFFF;
   --card: #FFFFFF;
-  --plinth: #ECECE7;
+  --plinth: #EFEFEF;
   --ink: #0F0F0E;
   --graphite: #55554F;
   --mist: #8E8E88;
   --hair: rgba(15, 15, 14, .14);
   --hair-soft: rgba(15, 15, 14, .06);
-  --crayon: #E4572E;
-  --crayon-soft: rgba(228, 87, 46, .12);
+  --crayon: #0F0F0E; /* black-and-white brand: accent = ink */
+  --crayon-soft: rgba(15, 15, 14, .08);
   --shadow: 0 1px 2px rgba(0,0,0,.10), 0 14px 32px rgba(0,0,0,.10);
 
   --d: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
@@ -24,17 +24,17 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #121211; --card: #1A1A18; --plinth: #1F1F1C; --ink: #F3F3EE; --graphite: #B5B5AE; --mist: #7C7C76;
+    --paper: #0A0A0A; --card: #161616; --plinth: #1C1C1C; --ink: #F3F3EE; --graphite: #B5B5AE; --mist: #7C7C76;
     --hair: rgba(243,243,238,.16); --hair-soft: rgba(243,243,238,.07);
-    --crayon: #F0683F; --crayon-soft: rgba(240,104,63,.16);
+    --crayon: #F3F3EE; --crayon-soft: rgba(243,243,238,.10);
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 14px 32px rgba(0,0,0,.45);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #121211; --card: #1A1A18; --plinth: #1F1F1C; --ink: #F3F3EE; --graphite: #B5B5AE; --mist: #7C7C76;
+  --paper: #0A0A0A; --card: #161616; --plinth: #1C1C1C; --ink: #F3F3EE; --graphite: #B5B5AE; --mist: #7C7C76;
   --hair: rgba(243,243,238,.16); --hair-soft: rgba(243,243,238,.07);
-  --crayon: #F0683F; --crayon-soft: rgba(240,104,63,.16);
+  --crayon: #F3F3EE; --crayon-soft: rgba(243,243,238,.10);
   --shadow: 0 1px 2px rgba(0,0,0,.4), 0 14px 32px rgba(0,0,0,.45);
   color-scheme: dark;
 }
@@ -44,7 +44,7 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--d); font-size: 18px; line-height: 1.5; font-variation-settings: "opsz" 14; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: underline; text-decoration-color: var(--crayon); text-decoration-thickness: 1px; text-underline-offset: 3px; transition: color .15s ease-out; }
-a:hover { color: var(--crayon); }
+a:hover { color: var(--crayon); text-decoration-thickness: 2px; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--crayon); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
 
