@@ -82,7 +82,7 @@ const sectionName = { design: 'Design', photography: 'Photography', video: 'Vide
         ))}
       </div>
     )}
-    {d.todo.length > 0 && (
+    {import.meta.env.DEV && d.todo.length > 0 && (
       <div class="todo" aria-label="To finish this page">
         <div class="mono">To finish this page</div>
         <ul>{d.todo.map((t) => <li>{t}</li>)}</ul>
