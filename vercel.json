@@ -1,0 +1,5 @@
+{
+  "framework": "astro",
+  "buildCommand": "SKIP_KEYSTATIC=1 astro build",
+  "outputDirectory": "dist"
+}
