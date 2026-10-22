@@ -9,7 +9,7 @@ const projects = defineCollection({
     title: z.string(),
     summary: z.string().default(''),
     side: z.enum(['crayon', 'caliper']).default('crayon'),
-    section: z.enum(['design', 'photography', 'video', 'software', 'fabrication', 'process', 'research']).default('design'),
+    section: z.enum(['design', 'illustration', 'photography', 'video', 'software', 'fabrication', 'process', 'research']).default('design'),
     tags: z.array(z.string()).default([]),
     year: z.string().default(''),
     place: z.string().default(''),

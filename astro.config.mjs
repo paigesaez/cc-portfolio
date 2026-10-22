@@ -12,6 +12,8 @@ const editor = process.env.SKIP_KEYSTATIC ? [] : [keystatic()];
 export default defineConfig({
   site: 'https://portfolio.calipercrayon.com',
   output: 'static',
+  // The work grid now lives on the home page; old /work links land there.
+  redirects: { '/work': '/' },
   adapter: process.env.SKIP_KEYSTATIC ? undefined : vercel(),
   integrations: [react(), markdoc(), ...editor],
 });

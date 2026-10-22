@@ -17,15 +17,15 @@ const all = (await getCollection('projects'))
 const i = all.findIndex((p) => p.id === project.id);
 const prev = all[(i - 1 + all.length) % all.length];
 const next = all[(i + 1) % all.length];
-const sectionName = { design: 'Design', photography: 'Photography', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
+const sectionName = { design: 'Design', illustration: 'Scientific illustration', photography: 'Photography', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
 ---
-<Base title={d.title} description={d.summary} current="work">
+<Base title={d.title} description={d.summary} current="portfolio">
   <div class="wrap">
     <header class="project-head">
       <div>
         <div class="tags">
-          <a class={`tag ${d.side}`} href={`/work/#${d.side}`}>{d.side}</a>
-          <a class="tag" href={`/work/#${d.section}`}>{sectionName}</a>
+          <span class={`tag ${d.side}`}>{d.side}</span>
+          <a class="tag" href={`/#${d.section}`}>{sectionName}</a>
           {d.tags.map((t) => <span class="tag">{t}</span>)}
           {d.year && <span class="tag" style="border:0;padding-left:0">{d.year}</span>}
         </div>
