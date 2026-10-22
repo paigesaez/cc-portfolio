@@ -29,7 +29,7 @@ export default config({
           label: 'Section',
           description: 'Which heading this project sits under on the work page.',
           options: [
-            { label: 'Design', value: 'design' },
+            { label: 'Graphic design', value: 'design' },
             { label: 'Scientific illustration', value: 'illustration' },
             { label: 'Photography', value: 'photography' },
             { label: 'Video', value: 'video' },

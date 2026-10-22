@@ -4,17 +4,17 @@ import Base from '../layouts/Base.astro';
 // Every project, grouped by its Section field (set per project in the editor), in this order.
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
 const order = ['design', 'illustration', 'video', 'photography', 'software', 'fabrication', 'process', 'research'];
-const names = { design: 'Design', illustration: 'Scientific illustration', video: 'Video', photography: 'Photography', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' };
+const names = { design: 'Graphic design', illustration: 'Scientific illustration', video: 'Video', photography: 'Photography', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' };
 const groups = order.map((s) => ({ key: s, name: names[s], items: projects.filter((p) => p.data.section === s) })).filter((g) => g.items.length);
 ---
-<Base title="Portfolio" current="portfolio">
+<Base title="Graphic design portfolio" description="Stephen James Kranz, graphic designer: book and editorial design, typography, scientific illustration and motion graphics." current="portfolio">
   <div class="wrap">
     <header class="project-head" style="padding-block:104px 40px">
       <div>
         <div class="mono" style="margin-bottom:24px">Stephen James Kranz · Berkeley, California</div>
         <h1 class="display">Caliper <span style="color:var(--crayon);font-weight:400">&amp;</span> Crayon</h1>
       </div>
-      <p class="lede">Technical and creative storytelling. Video, photography, illustration, books and process design for engineering teams.</p>
+      <p class="lede">Graphic designer. Book and editorial design, typography, scientific illustration and motion graphics, grounded in a materials science degree.</p>
     </header>
     {groups.map((g) => (
       <section class="group" id={g.key}>

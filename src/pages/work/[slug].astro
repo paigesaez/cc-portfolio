@@ -17,7 +17,7 @@ const all = (await getCollection('projects'))
 const i = all.findIndex((p) => p.id === project.id);
 const prev = all[(i - 1 + all.length) % all.length];
 const next = all[(i + 1) % all.length];
-const sectionName = { design: 'Design', illustration: 'Scientific illustration', photography: 'Photography', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
+const sectionName = { design: 'Graphic design', illustration: 'Scientific illustration', photography: 'Photography', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
 ---
 <Base title={d.title} description={d.summary} current="portfolio">
   <div class="wrap">
