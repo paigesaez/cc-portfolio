@@ -15,7 +15,8 @@ const sections = {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title} · Caliper &amp; Crayon</title>
 {description && <meta name="description" content={description} />}
-<link rel="icon" href="/img/brand/mark.png">
+<link rel="icon" href="/img/brand/mark.svg" type="image/svg+xml">
+<link rel="icon" href="/img/brand/mark.png" sizes="256x256">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&display=swap">
@@ -23,7 +24,7 @@ const sections = {
 <body>
 <nav class="nav" aria-label="Site">
   <div class="wrap">
-    <a class="wm" href="/"><img src="/img/brand/mark.png" alt="">Caliper &amp; Crayon</a>
+    <a class="wm" href="/"><img src="/img/brand/mark.svg" alt="">Caliper &amp; Crayon</a>
     <ul>
       <li><a href="https://www.calipercrayon.com/about">About</a></li>
       <li><a href="/" aria-current={current === 'portfolio' ? 'page' : undefined}>Portfolio</a></li>
@@ -36,7 +37,7 @@ const sections = {
 <main><slot /></main>
 <footer class="footer">
   <div class="wrap">
-    <div class="col"><img src="/img/brand/mark.png" alt=""><span class="mono" style="margin-top:8px">Caliper &amp; Crayon</span></div>
+    <div class="col"><img src="/img/brand/mark.svg" alt=""><span class="mono" style="margin-top:8px">Caliper &amp; Crayon</span></div>
     <div class="col"><span class="mono">Caliper</span>{sections.caliper.map(([label, url]) => <a href={url}>{label}</a>)}</div>
     <div class="col"><span class="mono">Crayon</span>{sections.crayon.map(([label, url]) => <a href={url}>{label}</a>)}</div>
     <div class="col"><span class="mono">Contact</span><span>stephenjameskranz@gmail.com</span><a href="/docs/sj-kranz-cv.pdf">Curriculum vitae (PDF)</a></div>
