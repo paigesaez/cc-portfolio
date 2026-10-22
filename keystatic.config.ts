@@ -1,4 +1,5 @@
 import { config, fields, collection } from '@keystatic/core';
+import { wrapper } from '@keystatic/core/content-components';
 
 // Content model for a project page. Every field here is a form field in the editor at /keystatic.
 export default config({
@@ -81,7 +82,13 @@ export default config({
         todo: fields.array(fields.text({ label: 'Item' }), { label: 'To finish this page', description: 'Shown in a dashed box while the list is not empty. Clear it when the page is done.', itemLabel: (p) => p.value }),
         featured: fields.checkbox({ label: 'Feature on home', defaultValue: false }),
         order: fields.integer({ label: 'Sort order', description: 'Lower comes first within a section.', defaultValue: 100 }),
-        body: fields.markdoc({ label: 'Story', description: 'First person. Keep it short; the images do the work.' }),
+        body: fields.markdoc({
+          label: 'Story',
+          description: 'First person. Keep it short; the images do the work. Use the Lede block for the opening paragraph.',
+          components: {
+            lede: wrapper({ label: 'Lede', description: 'Opening paragraph, set larger.', schema: {} }),
+          },
+        }),
       },
     }),
   },
