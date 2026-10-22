@@ -2,7 +2,7 @@
    Type: Bricolage Grotesque (display + text, optical size axis) and DM Mono (labels, data). */
 
 :root {
-  --paper: #FFFFFF;
+  --paper: #FAFAFA;
   --card: #FFFFFF;
   --plinth: #EFEFEF;
   --ink: #0F0F0E;
@@ -10,8 +10,8 @@
   --mist: #8E8E88;
   --hair: rgba(15, 15, 14, .14);
   --hair-soft: rgba(15, 15, 14, .06);
-  --crayon: #0F0F0E; /* black-and-white brand: accent = ink */
-  --crayon-soft: rgba(15, 15, 14, .08);
+  --crayon: #3F6BE5;
+  --crayon-soft: rgba(63, 107, 229, .12);
   --shadow: 0 1px 2px rgba(0,0,0,.10), 0 14px 32px rgba(0,0,0,.10);
 
   --d: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
@@ -26,7 +26,7 @@
   :root:not([data-theme="light"]) {
     --paper: #0A0A0A; --card: #161616; --plinth: #1C1C1C; --ink: #F3F3EE; --graphite: #B5B5AE; --mist: #7C7C76;
     --hair: rgba(243,243,238,.16); --hair-soft: rgba(243,243,238,.07);
-    --crayon: #F3F3EE; --crayon-soft: rgba(243,243,238,.10);
+    --crayon: #7A9BF0; --crayon-soft: rgba(122,155,240,.16);
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 14px 32px rgba(0,0,0,.45);
     color-scheme: dark;
   }
@@ -34,7 +34,7 @@
 :root[data-theme="dark"] {
   --paper: #0A0A0A; --card: #161616; --plinth: #1C1C1C; --ink: #F3F3EE; --graphite: #B5B5AE; --mist: #7C7C76;
   --hair: rgba(243,243,238,.16); --hair-soft: rgba(243,243,238,.07);
-  --crayon: #F3F3EE; --crayon-soft: rgba(243,243,238,.10);
+  --crayon: #7A9BF0; --crayon-soft: rgba(122,155,240,.16);
   --shadow: 0 1px 2px rgba(0,0,0,.4), 0 14px 32px rgba(0,0,0,.45);
   color-scheme: dark;
 }
