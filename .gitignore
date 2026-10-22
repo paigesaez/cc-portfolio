@@ -1,0 +1,8 @@
+
+# ignore
+node_modules
+dist
+.astro
+
+
+markdoc.config.timestamp-*.mjs

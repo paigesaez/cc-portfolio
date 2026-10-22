@@ -1,0 +1,98 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((p) => ({ params: { slug: p.id }, props: { project: p } }));
+}
+const { project } = Astro.props;
+const d = project.data;
+const { Content } = await render(project);
+
+// Previous / next within the same section, by sort order then title.
+const all = (await getCollection('projects'))
+  .filter((p) => p.data.section === d.section)
+  .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title));
+const i = all.findIndex((p) => p.id === project.id);
+const prev = all[(i - 1 + all.length) % all.length];
+const next = all[(i + 1) % all.length];
+const sectionName = { design: 'Design', photography: 'Photography', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
+---
+<Base title={d.title} description={d.summary} current="work">
+  <div class="wrap">
+    <header class="project-head">
+      <div>
+        <div class="tags">
+          <a class={`tag ${d.side}`} href={`/work/#${d.side}`}>{d.side}</a>
+          <a class="tag" href={`/work/#${d.section}`}>{sectionName}</a>
+          {d.tags.map((t) => <span class="tag">{t}</span>)}
+          {d.year && <span class="tag" style="border:0;padding-left:0">{d.year}</span>}
+        </div>
+        <h1 class="h1">{d.title}</h1>
+      </div>
+      {d.summary && <p class="lede">{d.summary}</p>}
+    </header>
+  </div>
+
+  {d.hero.length > 0 && (
+    <div class="wrap">
+      <div class={`plinth ${d.hero.length > 1 ? 'pair' : 'single'}`}>
+        {d.hero.map((h) => <img src={h.image} alt={h.alt} />)}
+      </div>
+    </div>
+  )}
+
+  <div class="wrap">
+    <div class="project">
+      <aside class="metablock" aria-label="Project details">
+        <dl>
+          {d.role && <div><dt>My role</dt><dd class="roles">{d.role}</dd></div>}
+          {d.collaborators && <div><dt>With</dt><dd>{d.collaborators}</dd></div>}
+          {d.year && <div><dt>Year</dt><dd>{d.year}</dd></div>}
+          {d.place && <div><dt>Place</dt><dd>{d.place}</dd></div>}
+          {d.format && <div><dt>Format</dt><dd>{d.format}</dd></div>}
+          {d.links.length > 0 && <div><dt>Links</dt><dd class="links">{d.links.map((l) => <a href={l.url} rel="noopener">{l.label}</a>)}</dd></div>}
+        </dl>
+      </aside>
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
+  </div>
+
+  {d.sheets.length > 0 && (
+    <div class="wrap">
+      {d.sheets.map((s) => (
+        <section class="sheet">
+          <div class={`plinth ${s.images.length > 1 ? 'pair' : ''}`}>
+            {s.images.map((im) => <img src={im.image} alt={im.alt} />)}
+          </div>
+          {(s.label || s.caption) && <div class="cap"><span class="mono">{s.label}</span><p>{s.caption}</p></div>}
+        </section>
+      ))}
+    </div>
+  )}
+
+  <div class="wrap">
+    {d.docs.length > 0 && (
+      <div class="docs">
+        {d.docs.map((doc) => (
+          <a class="doc" href={doc.url} rel="noopener"><span class="ic" data-kind={doc.kind}></span><span><b>{doc.title}</b><span>{doc.detail}</span></span></a>
+        ))}
+      </div>
+    )}
+    {d.todo.length > 0 && (
+      <div class="todo" aria-label="To finish this page">
+        <div class="mono">To finish this page</div>
+        <ul>{d.todo.map((t) => <li>{t}</li>)}</ul>
+      </div>
+    )}
+    {all.length > 1 && (
+      <nav class="prevnext" aria-label="More work">
+        <a href={`/work/${prev.id}/`}><span class="mono">Previous</span><span class="h3">{prev.data.title}</span></a>
+        <a href={`/work/${next.id}/`}><span class="mono">Next</span><span class="h3">{next.data.title}</span></a>
+      </nav>
+    )}
+  </div>
+</Base>

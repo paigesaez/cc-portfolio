@@ -1,0 +1,40 @@
+---
+import '../styles/style.css';
+const { title, description = '', current = '' } = Astro.props;
+const sections = { caliper: ['Origin Labs', 'Autodesk Ember', 'EngineerGuy', 'University of Illinois', 'Arizona State'], crayon: ['Photography', 'Design', 'Performance'] };
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title} · Caliper &amp; Crayon</title>
+{description && <meta name="description" content={description} />}
+<link rel="icon" href="/img/brand/mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<nav class="nav" aria-label="Site">
+  <div class="wrap">
+    <a class="wm" href="/"><img src="/img/brand/mark.png" alt="">Caliper &amp; Crayon</a>
+    <ul>
+      <li><a href="/work/" aria-current={current === 'work' ? 'page' : undefined}>Work</a></li>
+      <li><a href="/about/" aria-current={current === 'about' ? 'page' : undefined}>About</a></li>
+      <li><a href="/services/" aria-current={current === 'services' ? 'page' : undefined}>Services</a></li>
+      <li><a href="/contact/" aria-current={current === 'contact' ? 'page' : undefined}>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<main><slot /></main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="col"><img src="/img/brand/mark.png" alt=""><span class="mono" style="margin-top:8px">Caliper &amp; Crayon</span></div>
+    <div class="col"><span class="mono">Caliper</span>{sections.caliper.map((s) => <a href="/work/#caliper">{s}</a>)}</div>
+    <div class="col"><span class="mono">Crayon</span>{sections.crayon.map((s) => <a href="/work/#crayon">{s}</a>)}</div>
+    <div class="col"><span class="mono">Contact</span><span>stephenjameskranz@gmail.com</span><a href="/docs/sj-kranz-cv.pdf">Curriculum vitae (PDF)</a><a href="https://www.youtube.com/@engineerguy" rel="noopener">YouTube</a></div>
+  </div>
+</footer>
+</body>
+</html>
