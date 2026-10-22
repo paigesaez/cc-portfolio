@@ -7,14 +7,14 @@ const order = ['design', 'illustration', 'video', 'photography', 'software', 'fa
 const names = { design: 'Graphic design', illustration: 'Scientific illustration', video: 'Video', photography: 'Photography', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' };
 const groups = order.map((s) => ({ key: s, name: names[s], items: projects.filter((p) => p.data.section === s) })).filter((g) => g.items.length);
 ---
-<Base title="Graphic design portfolio" description="Stephen James Kranz, graphic designer: book and editorial design, typography, scientific illustration and motion graphics." current="portfolio">
+<Base title="Graphic design portfolio" description="Stephen James Kranz, scientist and designer: book and editorial design, typography, scientific illustration and motion graphics." current="portfolio">
   <div class="wrap">
     <header class="project-head" style="padding-block:104px 40px">
       <div>
         <div class="mono" style="margin-bottom:24px">Stephen James Kranz · Berkeley, California</div>
         <h1 class="display">Caliper <span style="color:var(--crayon);font-weight:400">&amp;</span> Crayon</h1>
       </div>
-      <p class="lede">Graphic designer. Book and editorial design, typography, scientific illustration and motion graphics, grounded in a materials science degree.</p>
+      <p class="lede">Scientist and designer. Book and editorial design, typography, scientific illustration and motion graphics, grounded in a materials science degree.</p>
     </header>
     {groups.map((g) => (
       <section class="group" id={g.key}>
