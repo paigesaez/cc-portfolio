@@ -111,7 +111,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .sheet .cap { display: grid; grid-template-columns: 3fr 8fr; gap: var(--s4); }
 .sheet .cap > * { min-width: 0; }
 .sheet .cap .mono { padding-top: 4px; }
-.sheet .cap p { margin: 0; max-width: var(--measure); color: var(--graphite); font-size: 17px; }
+.sheet .cap p { margin: 0; max-width: var(--measure); color: var(--graphite); font-size: 17px; white-space: pre-line; /* keeps line breaks typed in the caption field */ }
 
 .docs { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); margin-block: var(--s4); max-width: 760px; }
 .doc { display: flex; align-items: center; gap: 14px; border: 1px solid var(--hair); background: var(--card); padding: 14px 16px; text-decoration: none; border-radius: 2px; }
