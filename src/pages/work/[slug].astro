@@ -19,7 +19,7 @@ const prev = all[(i - 1 + all.length) % all.length];
 const next = all[(i + 1) % all.length];
 const sectionName = { design: 'Graphic design', illustration: 'Scientific illustration', photography: 'Photography', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
 ---
-<Base title={d.title} description={d.summary} current="portfolio">
+<Base title={d.title} description={d.summary} current="portfolio" image={d.hero[0]?.image} type="article">
   <div class="wrap">
     <header class="project-head">
       <div>

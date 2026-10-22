@@ -1,6 +1,11 @@
 ---
 import '../styles/style.css';
-const { title, description = '', current = '' } = Astro.props;
+const { title, description = '', current = '', image = '', type = 'website' } = Astro.props;
+// Absolute URLs for link previews and canonical. Astro.site comes from astro.config.
+const site = Astro.site ?? new URL('https://portfolio.calipercrayon.com');
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL(image || '/img/brand/mark.png', site).href;
+const fullTitle = `${title} · Caliper & Crayon`;
 // Footer links go to the original site (www.calipercrayon.com) until these sections exist here.
 const old = 'https://www.calipercrayon.com/about';
 const sections = {
@@ -13,8 +18,21 @@ const sections = {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{title} · Caliper &amp; Crayon</title>
+<title>{fullTitle}</title>
 {description && <meta name="description" content={description} />}
+<link rel="canonical" href={canonical}>
+<meta property="og:type" content={type}>
+<meta property="og:site_name" content="Caliper & Crayon">
+<meta property="og:title" content={fullTitle}>
+{description && <meta property="og:description" content={description} />}
+<meta property="og:url" content={canonical}>
+<meta property="og:image" content={ogImage}>
+<meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'}>
+<meta name="twitter:title" content={fullTitle}>
+{description && <meta name="twitter:description" content={description} />}
+<meta name="twitter:image" content={ogImage}>
+<link rel="sitemap" href="/sitemap-index.xml">
+<slot name="head" />
 <link rel="icon" href="/img/brand/mark.svg" type="image/svg+xml">
 <link rel="icon" href="/img/brand/mark.png" sizes="256x256">
 <link rel="preconnect" href="https://fonts.googleapis.com">

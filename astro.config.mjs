@@ -3,6 +3,7 @@ import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
 import vercel from '@astrojs/vercel';
+import sitemap from '@astrojs/sitemap';
 
 // The site is static. The Keystatic editor (/keystatic) and its API (/api/keystatic) are the only
 // server routes; the Vercel adapter runs them as functions. SKIP_KEYSTATIC=1 builds a plain static
@@ -15,5 +16,5 @@ export default defineConfig({
   // The work grid now lives on the home page; old /work links land there.
   redirects: { '/work': '/' },
   adapter: process.env.SKIP_KEYSTATIC ? undefined : vercel(),
-  integrations: [react(), markdoc(), ...editor],
+  integrations: [react(), markdoc(), sitemap({ filter: (p) => !p.includes('/keystatic') }), ...editor],
 });
