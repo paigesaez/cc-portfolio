@@ -23,7 +23,7 @@ const groups = order.map((s) => ({ key: s, name: names[s], items: projects.filte
           {g.items.map((p) => (
             <a class="card" href={`/work/${p.id}/`}>
               {(() => {
-                const t = p.data.thumb; const src = t.image || p.data.hero[0]?.image; const alt = t.image ? p.data.title : (p.data.hero[0]?.alt || p.data.title);
+                const t = { fit: 'whole', focus: 'center', zoom: '1', image: null, ...(p.data.thumb || {}) }; const src = t.image || p.data.hero[0]?.image; const alt = t.image ? p.data.title : (p.data.hero[0]?.alt || p.data.title);
                 const zoom = Number(t.zoom) || 1; const style = `object-position: ${t.focus}; transform-origin: ${t.focus};${zoom !== 1 ? ` --zoom: ${zoom};` : ''}`;
                 return <div class={`img ${t.fit}`}>{src && <img src={src} alt={alt} loading="lazy" style={style} />}</div>;
               })()}

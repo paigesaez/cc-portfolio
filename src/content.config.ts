@@ -23,7 +23,7 @@ const projects = defineCollection({
       fit: z.enum(['fill', 'whole']).default('whole'),
       focus: z.string().default('center'),
       zoom: z.string().default('1'),
-    }).default({}),
+    }).default({ fit: 'whole', focus: 'center', zoom: '1' }),
     sheets: z.array(z.object({ images: z.array(img).default([]), label: z.string().default(''), caption: z.string().default('') })).default([]),
     docs: z.array(z.object({ kind: z.string().default('PDF'), title: z.string(), detail: z.string().default(''), url: z.string() })).default([]),
     todo: z.array(z.string()).default([]),
