@@ -160,8 +160,9 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
    "whole" shows the entire image on the plinth with space around it. */
 .card .img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--plinth); display: grid; place-items: center; }
 .card .img img { --zoom: 1; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--zoom)); transition: transform .25s ease-out; }
-.card .img.whole { padding: 8%; }
-.card .img.whole img { object-fit: contain; }
+.card .img.whole { padding: 8%; position: relative; }
+/* Fit inside the padded area at any aspect ratio (height:100% alone overflows when the image is taller than the card's ratio). */
+.card .img.whole img { object-fit: contain; position: absolute; inset: 0; margin: auto; width: 84%; height: 84%; }
 .card:hover .img img { transform: scale(calc(var(--zoom) * 1.02)); }
 .card:hover .h3 { text-decoration: underline; text-decoration-color: var(--crayon); text-underline-offset: 3px; }
 .card .body { padding: 16px 16px 18px; display: grid; gap: 8px; }
