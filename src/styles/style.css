@@ -171,3 +171,4 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 
 /* Lede block from the story field: one paragraph set larger. */
 .lede-block > p { font-size: clamp(20px, 2.2vw, 24px); line-height: 1.4; color: var(--graphite); font-variation-settings: "opsz" 24; }
+.prose .lede-block { margin: 0 0 1em; } /* the wrapper carries the paragraph gap; its inner p is a :last-child and loses its own */
