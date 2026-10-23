@@ -10,6 +10,15 @@ const { project } = Astro.props;
 const d = project.data;
 const { Content } = await render(project);
 
+// Photography pages: read each sheet image's aspect ratio so paired photos (one vertical, one horizontal) share a height.
+import sharp from 'sharp';
+const ratio: Record<string, number> = {};
+if (d.section === 'photography') {
+  for (const s of d.sheets) for (const im of s.images) {
+    try { const m = await sharp('public' + im.image).metadata(); if (m.width && m.height) ratio[im.image] = m.width / m.height; } catch {}
+  }
+}
+
 // Previous / next within the same section, by sort order then title.
 const all = (await getCollection('projects'))
   .filter((p) => p.data.section === d.section)
@@ -66,7 +75,7 @@ const sectionName = { design: 'Graphic design', illustration: 'Scientific illust
       {d.sheets.map((s) => (
         <section class="sheet">
           <div class={`plinth ${s.images.length > 1 ? 'pair' : ''}`}>
-            {s.images.map((im) => im.link ? <a class="img-link" href={im.link} rel="noopener"><img src={im.image} alt={im.alt} /></a> : <img src={im.image} alt={im.alt} />)}
+            {s.images.map((im) => im.link ? <a class="img-link" href={im.link} rel="noopener"><img src={im.image} alt={im.alt} /></a> : <img src={im.image} alt={im.alt} style={ratio[im.image] ? `--r: ${ratio[im.image]}` : undefined} />)}
           </div>
           {(s.label || s.caption) && <div class="cap"><span class="mono">{s.label}</span><p>{s.caption}</p></div>}
         </section>

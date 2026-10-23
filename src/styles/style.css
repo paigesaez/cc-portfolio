@@ -113,6 +113,9 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .sheet .plinth { padding: clamp(16px, 4vw, 56px); }
 .sheet .plinth img { width: 100%; max-width: 1100px; }
 .photo .sheet .plinth:not(.pair) img { width: auto; max-width: min(100%, 1100px); max-height: 88vh; } /* photography: vertical photos stay on screen */
+.photo .sheet .plinth.pair { display: flex; align-items: center; justify-content: center; } /* photography pairs: equal heights */
+.photo .sheet .plinth.pair img { flex: var(--r, 1) 1 0; width: 0; min-width: 0; }
+@media (max-width: 560px) { .photo .sheet .plinth.pair { flex-direction: column; } .photo .sheet .plinth.pair img { flex: none; width: 100%; } }
 .sheet .cap { display: grid; grid-template-columns: 3fr 8fr; gap: var(--s4); }
 .sheet .cap > * { min-width: 0; }
 .sheet .cap .mono { padding-top: 4px; }
