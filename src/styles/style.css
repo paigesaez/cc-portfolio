@@ -105,7 +105,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .metablock dl { margin: 0; display: grid; gap: var(--s2); }
 .metablock dt { font-family: var(--m); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--mist); margin-bottom: 4px; }
 .metablock dd { margin: 0; font-size: 15px; line-height: 1.45; }
-.metablock dd.roles { font-weight: 600; font-size: 17px; letter-spacing: -.01em; }
+.metablock dd.roles { font-weight: 600; font-size: 17px; letter-spacing: -.01em; white-space: pre-line; } /* line breaks in the role field render as separate lines */
 .metablock .links { display: grid; gap: 6px; }
 
 /* image-led sections */
