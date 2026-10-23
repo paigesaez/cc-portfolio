@@ -112,6 +112,7 @@ h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
 .sheet { display: grid; gap: var(--s2); padding-block: var(--s3); }
 .sheet .plinth { padding: clamp(16px, 4vw, 56px); }
 .sheet .plinth img { width: 100%; max-width: 1100px; }
+.photo .sheet .plinth:not(.pair) img { width: auto; max-width: min(100%, 1100px); max-height: 88vh; } /* photography: vertical photos stay on screen */
 .sheet .cap { display: grid; grid-template-columns: 3fr 8fr; gap: var(--s4); }
 .sheet .cap > * { min-width: 0; }
 .sheet .cap .mono { padding-top: 4px; }

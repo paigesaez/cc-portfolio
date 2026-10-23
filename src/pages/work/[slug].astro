@@ -62,7 +62,7 @@ const sectionName = { design: 'Graphic design', illustration: 'Scientific illust
   </div>
 
   {d.sheets.length > 0 && (
-    <div class="wrap">
+    <div class={`wrap ${d.section === 'photography' ? 'photo' : ''}`}>
       {d.sheets.map((s) => (
         <section class="sheet">
           <div class={`plinth ${s.images.length > 1 ? 'pair' : ''}`}>
