@@ -11,6 +11,8 @@ const d = project.data;
 const { Content } = await render(project);
 
 // Click-to-enlarge lightbox. Trial: on for these pages only; widen to all once it's approved.
+// Tag row above project titles: hidden for now; set to true to bring it back.
+const showTags = false;
 const zoom = ['origin-flag'].includes(project.id);
 
 // Photography pages: read each sheet image's aspect ratio so paired photos (one vertical, one horizontal) share a height.
@@ -35,12 +37,14 @@ const sectionName = { design: 'Graphic design', illustration: 'Scientific illust
   <div class="wrap">
     <header class="project-head">
       <div>
-        <div class="tags">
-          <span class={`tag ${d.side}`}>{d.side}</span>
-          <a class="tag" href={`/#${d.section}`}>{sectionName}</a>
-          {d.tags.map((t) => <span class="tag">{t}</span>)}
-          {d.year && <span class="tag" style="border:0;padding-left:0">{d.year}</span>}
-        </div>
+        {showTags && (
+          <div class="tags">
+            <span class={`tag ${d.side}`}>{d.side}</span>
+            <a class="tag" href={`/#${d.section}`}>{sectionName}</a>
+            {d.tags.map((t) => <span class="tag">{t}</span>)}
+            {d.year && <span class="tag" style="border:0;padding-left:0">{d.year}</span>}
+          </div>
+        )}
         <h1 class="h1">{d.title}</h1>
       </div>
       {d.summary && <p class="lede">{d.summary}</p>}
