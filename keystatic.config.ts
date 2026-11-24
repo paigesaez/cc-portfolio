@@ -32,6 +32,7 @@ export default config({
             { label: 'Graphic design', value: 'design' },
             { label: 'Scientific illustration', value: 'illustration' },
             { label: 'Photography', value: 'photography' },
+            { label: 'Performance', value: 'performance' },
             { label: 'Video', value: 'video' },
             { label: 'Software', value: 'software' },
             { label: 'Fabrication', value: 'fabrication' },

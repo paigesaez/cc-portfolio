@@ -16,7 +16,7 @@ const zoom = ['origin-flag'].includes(project.id);
 // Photography pages: read each sheet image's aspect ratio so paired photos (one vertical, one horizontal) share a height.
 import sharp from 'sharp';
 const ratio: Record<string, number> = {};
-if (d.section === 'photography') {
+if (d.section === 'photography' || d.section === 'performance') {
   for (const s of d.sheets) for (const im of s.images) {
     try { const m = await sharp('public' + im.image).metadata(); if (m.width && m.height) ratio[im.image] = m.width / m.height; } catch {}
   }
@@ -29,7 +29,7 @@ const all = (await getCollection('projects'))
 const i = all.findIndex((p) => p.id === project.id);
 const prev = all[(i - 1 + all.length) % all.length];
 const next = all[(i + 1) % all.length];
-const sectionName = { design: 'Graphic design', illustration: 'Scientific illustration', photography: 'Photography', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
+const sectionName = { design: 'Graphic design', illustration: 'Scientific illustration', photography: 'Photography', performance: 'Performance', video: 'Video', software: 'Software', fabrication: 'Fabrication', process: 'Process & procedures', research: 'Research' }[d.section];
 ---
 <Base title={d.title} description={d.summary} current="portfolio" image={d.hero[0]?.image} type="article">
   <div class="wrap">
@@ -74,7 +74,7 @@ const sectionName = { design: 'Graphic design', illustration: 'Scientific illust
   </div>
 
   {d.sheets.length > 0 && (
-    <div class={`wrap ${d.section === 'photography' ? 'photo' : ''}`}>
+    <div class={`wrap ${d.section === 'photography' || d.section === 'performance' ? 'photo' : ''}`}>
       {d.sheets.map((s) => (
         <section class="sheet">
           <div class={`plinth ${s.images.length > 1 ? 'pair' : ''}`}>
